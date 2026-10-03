@@ -1,0 +1,53 @@
+{
+ "_doc": "Ag session shortcuts (spec: rule.md beside this). tmux binds each `prefix` key in tmux/dot-config/ag/ag.tmux.conf to a command containing `tmux`; Hammerspoon (Mac clients, ag.lua) turns each Cmd `keys` into Ctrl+B + `prefix` while an Ag window is focused. ag-shortcuts-check verifies both and regenerates tmux/SHORTCUTS.md.",
+ "bindings": [
+  {
+   "keys": "cmd+t",
+   "prefix": "t",
+   "label": "New tab running Pi",
+   "tmux": "ag-new-pi-tab"
+  },
+  {
+   "keys": "cmd+w",
+   "prefix": "x",
+   "label": "Close pane",
+   "tmux": "kill-pane"
+  },
+  {
+   "keys": "cmd+shift+t",
+   "prefix": "u",
+   "label": "Reopen closed pane",
+   "tmux": "ag-nav reopen"
+  },
+  {
+   "keys": "cmd+d",
+   "prefix": "v",
+   "label": "Split side by side",
+   "tmux": "split-window -h"
+  },
+  {
+   "keys": "cmd+shift+d",
+   "prefix": "minus",
+   "label": "Split stacked",
+   "tmux": "split-window -v"
+  },
+  {
+   "keys": "cmd+[",
+   "prefix": "[",
+   "label": "Focus history back",
+   "tmux": "ag-nav back"
+  },
+  {
+   "keys": "cmd+]",
+   "prefix": "]",
+   "label": "Focus history forward",
+   "tmux": "ag-nav forward"
+  },
+  {
+   "keys": "cmd+1..9",
+   "prefix": "1..9",
+   "label": "Switch to tab 1-9",
+   "tmux": "select-window"
+  }
+ ]
+}

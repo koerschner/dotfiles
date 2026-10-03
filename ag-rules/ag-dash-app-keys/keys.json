@@ -1,0 +1,6 @@
+{
+ "_doc": "The ag-dash Mac app's show/hide key (spec: rule.md beside this); registered by macos-apps/ag-dash/app/hotkeys.js.",
+ "bindings": [
+  { "keys": "ctrl+cmd+a", "do": "toggle", "label": "Show the ag-dash app, or hide it when it's in front (system-wide)" }
+ ]
+}

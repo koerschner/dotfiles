@@ -1,0 +1,10 @@
+{
+ "_doc": "Quick entry (spec: rule.md beside this), run by the ag-dash Mac app. Chords of modifiers only: lcmd/rcmd, lshift/rshift, lalt/ralt, lctrl/rctrl, or cmd/shift/alt/ctrl for either side. Actions: quickEntry, quickEntryWithShot; in the box (when: entry): send, sendPin, close.",
+ "bindings": [
+  { "keys": "lcmd+rcmd", "do": "quickEntry", "label": "Open quick entry (anywhere)" },
+  { "keys": "shift+lcmd+rcmd", "do": "quickEntryWithShot", "label": "Open quick entry with a screenshot" },
+  { "keys": "enter", "when": "entry", "do": "send", "label": "Quick entry: send to the ag-inbox" },
+  { "keys": "cmd+enter", "when": "entry", "do": "sendPin", "label": "Quick entry: send and pin the new session" },
+  { "keys": "esc", "when": "entry", "do": "close", "label": "Quick entry: close" }
+ ]
+}
