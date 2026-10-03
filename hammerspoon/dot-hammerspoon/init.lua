@@ -121,7 +121,6 @@ local appList = {
 	["t"] = "Microsoft Teams",
 	["m"] = "Gmail",
 	["g"] = "Grok Bot",
-	["p"] = "Perplexity",
 }
 local urlList = {
 	["o"] = "cleanshot://capture-text", -- Capture text (OCR) with Ctrl+Cmd+O

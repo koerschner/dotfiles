@@ -48,7 +48,6 @@ cask "linear"
 cask "microsoft-teams"
 cask "nessie-app"        # agent-trace sync (README "Nessie")
 cask "obsidian"
-cask "perplexity"
 cask "roblox"
 cask "shadow"
 cask "slack"
