@@ -170,7 +170,7 @@ gwm() {
 # Pi's model config lives solely in ~/.pi/agent/settings.json.
 # Codex / ChatGPT desktop read TFY_API_KEY (env_key in ~/.codex/config.toml,
 # where model_provider = "tfy" is set). GUI apps get it via the
-# com.nathan.tfy-env LaunchAgent (see ~/dotfiles/macos), not from this file.
+# com.nathan.ag-tfy-env LaunchAgent (see ~/dotfiles/macos), not from this file.
 if [[ -n ${TFY_TOKEN:-} ]]; then
   export TFY_API_KEY="$TFY_TOKEN"
   export ANTHROPIC_BASE_URL="https://tfy.promptlens.trilogy.com"

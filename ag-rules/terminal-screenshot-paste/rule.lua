@@ -6,8 +6,8 @@
 local AG_HOST_BIN = os.getenv("HOME") .. "/.local/bin/ag-host"
 local PASTE_HOST = (hs.execute(AG_HOST_BIN):gsub("%s", ""))
 if PASTE_HOST == "" then PASTE_HOST = "ag-engine" end
--- Whether this Mac is the session host (machines/README.md via machine-role).
-local IS_HOST = select(2, hs.execute(os.getenv("HOME") .. "/.local/bin/machine-role host")) == true
+-- Whether this Mac is the session host (machines/README.md via ag-machine-role).
+local IS_HOST = select(2, hs.execute(os.getenv("HOME") .. "/.local/bin/ag-machine-role host")) == true
 local PASTE_DIR = "inbox/clipboard"
 local PASTE_REMOTE_HOME = (hs.execute(AG_HOST_BIN .. " --home"):gsub("%s", "")) -- pi wants absolute paths
 local IMAGE_EXT = { png = true, jpg = true, jpeg = true, gif = true, webp = true, heic = true }

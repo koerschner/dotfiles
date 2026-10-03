@@ -4,7 +4,7 @@ Nathan's personal machine config: shell, editor, terminal, git, window managemen
 macOS defaults, an idempotent `bootstrap`, and per-machine snapshots under `machines/` so drift shows
 up in git. Configs are stowed with `stow --dotfiles`.
 
-The agent system (tmux via ag-mux + Pi, ag-dash, the ag-inbox, tickler, bridge, infra, agent instructions and
+The agent system (tmux via ag-mux + Pi, ag-dash, the ag-inbox, ag-tickler, bridge, infra, agent instructions and
 skills) lives in its own private repo, **ag** (`koerschner/ag`). `bootstrap` clones it to `~/ag`
 and runs `~/ag/install`; see its README for everything agent-related, including the secrets list.
 
@@ -75,7 +75,7 @@ ag README, section "Secrets". Personal-config ones: `~/.zshenv.local`,
   Discord, Linear, Spotify, Tailscale, Jump Desktop.
 - On ag, Chrome's Default profile must stay signed in to Google as
   `nathankoerschner@gmail.com` (Gmail loads, not just Chrome sync): agents read
-  email verification codes there with `chatgpt-cua` instead of driving the
+  email verification codes there with `ag-chatgpt-cua` instead of driving the
   client. Check: `.google.com` `SID` cookie exists in
   `~/Library/Application Support/Google/Chrome/Default/Cookies`. If Google shows
   "Signed out", ask Nathan to sign in again (password + 2FA).

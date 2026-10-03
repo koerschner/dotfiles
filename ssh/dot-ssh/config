@@ -24,10 +24,10 @@ Host ag-mac ag
     ControlPath ~/.ssh/sockets/%r@%h-%p
     ControlPersist 4h
 
-# ag-client: the Mac where Nathan sits. ag-mac uses this for shot/show/client-cua.
+# ag-client: the Mac where Nathan sits. ag-mac uses this for ag-shot/ag-show/ag-client-cua.
 # `nathan-dev-client` is its old name, kept as an alias during the rename (2026-09-29).
 # The engine reaches the client with the same key it uses for ag-mac (authorized there from tailnet IPs):
-# presence polling and show/shot once sessions live on the engine.
+# ag-presence polling and ag-show/ag-shot once sessions live on the engine.
 Match host ag-client,nathan-dev-client exec "test -f ~/.ssh/ag-mac"
     IdentityFile ~/.ssh/ag-mac
 

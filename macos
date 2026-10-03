@@ -96,8 +96,8 @@ defaults -currentHost write -g AppleFontSmoothing -int 0
 #   battery_guard.lua (host only) force-sleeps on low battery as a safety net,
 #   using passwordless sudo for pmset.
 # - client: normal macOS sleep; it only needs to be awake while Nathan uses it.
-# machine-role lives in the ag repo (machines/README.md is there too).
-if "${AG:-$HOME/ag}/bin/dot-local/bin/machine-role" host extremity; then
+# ag-machine-role lives in the ag repo (machines/README.md is there too).
+if "${AG:-$HOME/ag}/bin/dot-local/bin/ag-machine-role" host extremity; then
   sudo pmset -a disablesleep 1
   echo "$USER ALL=(root) NOPASSWD: /usr/bin/pmset" | sudo tee /etc/sudoers.d/pmset >/dev/null
   sudo chmod 0440 /etc/sudoers.d/pmset
@@ -110,7 +110,7 @@ else
 fi
 
 # No idle screen saver: it locks the session after 20 min, which blocks
-# computer use on a headless/closed Mac (see headless-display LaunchAgent).
+# computer use on a headless/closed Mac (see ag-headless-display LaunchAgent).
 defaults -currentHost write com.apple.screensaver idleTime -int 0
 
 killall Dock
