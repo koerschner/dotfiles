@@ -4,7 +4,7 @@ Nathan's personal machine config: shell, editor, terminal, git, window managemen
 macOS defaults, an idempotent `bootstrap`, and per-machine snapshots under `machines/` so drift shows
 up in git. Configs are stowed with `stow --dotfiles`.
 
-The agent system (tmux via ag-mux + Pi, AG Dash, the ag inbox, tickler, bridge, infra, agent instructions and
+The agent system (tmux via ag-mux + Pi, ag-dash, the ag-inbox, tickler, bridge, infra, agent instructions and
 skills) lives in its own private repo, **ag** (`koerschner/ag`). `bootstrap` clones it to `~/ag`
 and runs `~/ag/install`; see its README for everything agent-related, including the secrets list.
 
