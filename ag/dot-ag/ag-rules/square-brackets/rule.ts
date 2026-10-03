@@ -19,15 +19,15 @@ function ownText(text: string, parseOrigins: Parse): string | null {
 	return rest.split(APPENDED)[0];
 }
 
-/** The bracketed notes in a prompt: prose in [ ], outside code, not a link/checkbox/index. */
+/** The bracketed notes in a prompt: prose in [ ], outside code, not a link/checkbox/index/key combo. */
 export function bracketNotes(text: string, parseOrigins: Parse): string[] {
 	const own = ownText(text, parseOrigins);
 	if (own === null) return [];
 	const body = own.replace(/```[\s\S]*?(```|$)/g, " ").replace(/`[^`\n]*`/g, " ");
 	const notes: string[] = [];
-	for (const m of body.matchAll(/(?<![\w\]\\!])\[([^\[\]\n]+)\](?![(\[:])/g)) {
+	for (const m of body.matchAll(/(?<![\w\]\\!+])\[([^\[\]\n]+)\](?![(\[:])/g)) {
 		const note = m[1].trim();
-		if (/[a-z]/i.test(note) && /\s/.test(note) && !TOOL_TAG.test(note)) notes.push(note);
+		if (/[a-z]/i.test(note) && /\s/.test(note) && !TOOL_TAG.test(note) && !note.endsWith("+")) notes.push(note);
 	}
 	return notes;
 }
