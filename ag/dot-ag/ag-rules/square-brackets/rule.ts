@@ -3,10 +3,10 @@
 import type { PromptAg, PromptRule } from "../../../../../ag/ag-rules/types.ts";
 type Parse = PromptAg["parseOrigins"];
 
-// Agent-written prompts: origin tags only agents add (ag spawn/report, the tickler, a spun-out note), and the
+// Agent-written prompts: origin tags only agents add (ag spawn/report/send, the tickler, a spun-out note), and the
 // older plain-text markers (the [ag-parent: …] footer, tickler icons). Routed captures (follow, hint, share,
 // screenshot, comment, playbook) are still Nathan's words, so the rule applies to them.
-const AGENT_KINDS = new Set(["spawn", "report", "tickler", "note"]);
+const AGENT_KINDS = new Set(["spawn", "report", "send", "tickler", "note"]);
 const LEGACY_AGENT = /\[ag-parent: |^\s*(?:⏰|🔔|◷|↺) /u;
 const APPENDED = /\n(?:---\n)?(?:Session context \(snapshot|\[ag-parent: )/;
 // Tags tools put in prompts, not Nathan's notes.
