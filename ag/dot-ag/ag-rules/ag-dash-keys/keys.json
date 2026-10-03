@@ -2,6 +2,8 @@
  "_doc": "ag-dash's keyboard shortcuts (spec: rule.md beside this). Actions and `when`s are defined in ag's ag-dash/dot-local/share/ag-dash/chat.html (search keyActions); format: keys.js there.",
  "bindings": [
   { "keys": "shift+cmd+o", "do": "newChat", "label": "New chat", "group": "Anywhere" },
+  { "keys": "cmd+[", "do": "back", "label": "Back" },
+  { "keys": "cmd+]", "do": "forward", "label": "Forward" },
   { "keys": "cmd+k", "do": "toggleSearch", "label": "Search chats" },
   { "keys": ["shift+cmd+s", "cmd+\\"], "do": "toggleSidebar", "label": "Toggle sidebar" },
   { "keys": ["alt+down", "alt+up"], "do": "stepChatKey", "label": "Next / previous chat" },

@@ -8,7 +8,7 @@ enabled: true
 ag-dash (http://ag:7376/chat) works from the keyboard like Gmail, and its shortcuts sheet (? or ⌘/) lists
 exactly these.
 
-Anywhere: ⇧⌘O new chat; ⌘K search chats; ⇧⌘S or ⌘\ toggle the sidebar; ⌥↓/⌥↑ next/previous chat; ⇧Esc
+Anywhere: ⇧⌘O new chat; ⌘[ / ⌘] back / forward through the chats and views you've opened (like a browser); ⌘K search chats; ⇧⌘S or ⌘\ toggle the sidebar; ⌥↓/⌥↑ next/previous chat; ⇧Esc
 focus the message box; ⇧⌘C copy the last response; ⌥V dictate; ⇧⌘M move the chat to a project; ⇧⌘⌫ archive
 it (not while typing); ⇧⌘P pin/unpin; ⌘Z undo the last archive or move while its Undo toast is up (in a field
 with text it stays the field's own undo); ⌘/ the shortcuts sheet. Esc closes whatever is open (dictation, a

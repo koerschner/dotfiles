@@ -1,6 +1,7 @@
 // ag-rules: square-brackets (spec: rule.md beside this). Bracketed notes in Nathan's prompts → new sessions.
-import { originTag, parseOrigins } from "../../../ag/pi/dot-pi/agent/extensions/ag-origin.ts";
-import type { PromptRule } from "../../../ag/ag-rules/types.ts";
+// Type-only import (erased at runtime): rules get everything from ag through their `ag` argument.
+import type { PromptAg, PromptRule } from "../../../../../ag/ag-rules/types.ts";
+type Parse = PromptAg["parseOrigins"];
 
 // Agent-written prompts: origin tags only agents add (ag spawn/report, the tickler, a spun-out note), and the
 // older plain-text markers (the [ag-parent: …] footer, tickler icons). Routed captures (follow, hint, share,
@@ -12,15 +13,15 @@ const APPENDED = /\n(?:---\n)?(?:Session context \(snapshot|\[ag-parent: )/;
 const TOOL_TAG = /^(?:ag-|image\b|pasted\b|merged\b|routine-)/i;
 
 /** Nathan's own words: the prompt without origin tags or appended context blocks. */
-function ownText(text: string): string | null {
+function ownText(text: string, parseOrigins: Parse): string | null {
 	const { text: rest, origins } = parseOrigins(text);
 	if (origins.some((o) => AGENT_KINDS.has(o.kind)) || LEGACY_AGENT.test(text)) return null;
 	return rest.split(APPENDED)[0];
 }
 
 /** The bracketed notes in a prompt: prose in [ ], outside code, not a link/checkbox/index. */
-export function bracketNotes(text: string): string[] {
-	const own = ownText(text);
+export function bracketNotes(text: string, parseOrigins: Parse): string[] {
+	const own = ownText(text, parseOrigins);
 	if (own === null) return [];
 	const body = own.replace(/```[\s\S]*?(```|$)/g, " ").replace(/`[^`\n]*`/g, " ");
 	const notes: string[] = [];
@@ -32,9 +33,10 @@ export function bracketNotes(text: string): string[] {
 }
 
 const rule: PromptRule = (prompt, ag) => {
-	const notes = bracketNotes(prompt.text);
+	const { originTag, parseOrigins } = ag;
+	const notes = bracketNotes(prompt.text, parseOrigins);
 	if (!notes.length) return;
-	const context = ownText(prompt.text)!.trim();
+	const context = ownText(prompt.text, parseOrigins)!.trim();
 	for (const note of notes) {
 		const why =
 			`Nathan wrote this as a [bracketed] note in a prompt to another session. His standing rule (ag-rules: ` +
@@ -46,7 +48,7 @@ const rule: PromptRule = (prompt, ag) => {
 	}
 	let rest = prompt.text;
 	for (const note of notes) rest = rest.replace(`[${note}]`, "").replace(/[ \t]{2,}/g, " ");
-	if (!(ownText(rest) ?? "").trim()) return { handled: `Spun out ${notes.length} bracketed note(s) as new sessions` };
+	if (!(ownText(rest, parseOrigins) ?? "").trim()) return { handled: `Spun out ${notes.length} bracketed note(s) as new sessions` };
 	const list = notes.map((n) => `“${n}”`).join("; ");
 	const label = notes.length === 1 ? "Bracketed note spun out" : `${notes.length} bracketed notes spun out`;
 	return {
